@@ -694,6 +694,8 @@ extern unsigned nb_output_dumped;
 
 extern int ignore_unknown_streams;
 extern int copy_unknown_streams;
+//modify by yangxu
+extern int ignore_empty_streams;
 
 extern int recast_media;
 

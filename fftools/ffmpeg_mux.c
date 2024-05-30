@@ -597,6 +597,12 @@ int mux_check_init(Muxer *mux)
         OutputStream *ost = of->streams[i];
         if (!ost->initialized)
             return 0;
+
+		//modify by yangxu
+		/*if (ignore_empty_streams && !of->nb_streams && !(of->format->flags & AVFMT_NOSTREAMS)) {
+			av_log(NULL, AV_LOG_INFO, "nb_output_dumped1 = %d\n", nb_output_dumped);
+			return 0;
+		}*/
     }
 
     ret = avformat_write_header(fc, &mux->opts);

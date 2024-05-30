@@ -518,7 +518,7 @@ static void print_report(int is_last_report, int64_t timer_start, int64_t cur_ti
             last_time = cur_time;
         }
         if (((cur_time - last_time) < stats_period && !first_report) ||
-            (first_report && nb_output_dumped < nb_output_files))
+			(first_report && nb_output_dumped < nb_output_files))
             return;
         last_time = cur_time;
     }
@@ -1200,7 +1200,7 @@ static int transcode(int *err_rate_exceeded)
             ret = 0;
             break;
         }
-
+		
         ret = transcode_step(ost);
         if (ret < 0 && ret != AVERROR_EOF) {
             av_log(NULL, AV_LOG_ERROR, "Error while filtering: %s\n", av_err2str(ret));

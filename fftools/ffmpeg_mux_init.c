@@ -1838,9 +1838,18 @@ static int create_streams(Muxer *mux, const OptionsContext *o)
         return ret;
 
     if (!oc->nb_streams && !(oc->oformat->flags & AVFMT_NOSTREAMS)) {
-        av_dump_format(oc, nb_output_files - 1, oc->url, 1);
-        av_log(mux, AV_LOG_ERROR, "Output file does not contain any stream\n");
-        return AVERROR(EINVAL);
+        //av_dump_format(oc, nb_output_files - 1, oc->url, 1);
+        //av_log(mux, AV_LOG_ERROR, "Output file does not contain any stream\n");
+        //return AVERROR(EINVAL);		
+		//modify by yangxu
+		if (!ignore_empty_streams) {
+			av_dump_format(oc, nb_output_files - 1, oc->url, 1);
+			av_log(mux, AV_LOG_ERROR, "Output file does not contain any stream\n");
+        	return AVERROR(EINVAL);
+		}
+		else {
+			nb_output_dumped++;
+		}	
     }
 
     return 0;

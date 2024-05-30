@@ -99,6 +99,8 @@ int do_psnr            = 0;
 int ignore_unknown_streams = 0;
 int copy_unknown_streams = 0;
 int recast_media = 0;
+//modify by yangxu
+int ignore_empty_streams = 0;
 
 static void uninit_options(OptionsContext *o)
 {
@@ -1428,6 +1430,9 @@ const OptionDef options[] = {
         "never overwrite output files" },
     { "ignore_unknown", OPT_BOOL,                                    {              &ignore_unknown_streams },
         "Ignore unknown stream types" },
+	//modify by yangxu
+	{ "ignore_empty_streams",OPT_BOOL,                               {              &ignore_empty_streams },
+        "continue processing even if one or more output files do not contain a stream" },
     { "copy_unknown",   OPT_BOOL | OPT_EXPERT,                       {              &copy_unknown_streams },
         "Copy unknown stream types" },
     { "recast_media",   OPT_BOOL | OPT_EXPERT,                       {              &recast_media },
